@@ -1,8 +1,7 @@
 const express = require("express")
 const app = express()
 const { loadImage, createCanvas, registerFont } = require('canvas')
-registerFont('./ReadexPro-SemiBold.ttf', {family: 'readex', weight: 'bold'})
-registerFont('./ReadexPro-Medium.ttf', {family: 'readex'})
+registerFont('./DotGothic16-Regular.ttf', {family: 'dotgothic'})
 
 app.get("/", (_, response) => {
   response.sendFile(__dirname + "/views/index.html")
@@ -25,7 +24,7 @@ app.get("/note", (request, response) => {
 })
 
 const WIDTH = 1200
-const HEIGHT = 630
+const HEIGHT = 675
 
 function createBase() {
   const canvas = createCanvas(WIDTH, HEIGHT)
@@ -41,11 +40,11 @@ async function drawTitle(string, size) {
   const PADDING = 100
   const [canvas, ctx] = createBase()
   ctx.fillStyle = '#767676'
-  ctx.font = `40px readex`
+  ctx.font = `40px dotgothic`
   ctx.fillText('muan.co', PADDING, PADDING * 1.5)
 
   ctx.fillStyle = '#222222'
-  ctx.font = `normal 600 ${size}px readex`
+  ctx.font = `normal ${size}px dotgothic`
   ctx.fillText(string, PADDING - size / 25, PADDING + 20 + size * 1.4)
 
   const logoWidth = 100 * 0.8
@@ -61,7 +60,7 @@ function drawNote(string, date = '') {
   const MAX = 35
   const MAXLINES = 5
   const [canvas, ctx] = createBase()
-  ctx.font = `50px readex`
+  ctx.font = `50px dotgothic`
 
   let wrappedString = ''
   let currentLine = ''
@@ -81,10 +80,10 @@ function drawNote(string, date = '') {
       break
     }
   }
-  
+
   ctx.fillText(wrappedString.trim(), PADDING, PADDING * 1.5)
 
-  ctx.font = '40px readex'
+  ctx.font = '40px dotgothic'
   ctx.fillText(`${date ? date + ' ' : ''}@ muan.co`, PADDING, HEIGHT - PADDING)
   return canvas
 }
