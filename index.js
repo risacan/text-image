@@ -41,14 +41,14 @@ async function drawTitle(string, size) {
   const [canvas, ctx] = createBase()
   ctx.fillStyle = '#767676'
   ctx.font = `40px dotgothic`
-  ctx.fillText('muan.co', PADDING, PADDING * 1.5)
+  ctx.fillText('りさきゃん', PADDING, PADDING * 1.5)
 
   ctx.fillStyle = '#222222'
   ctx.font = `normal ${size}px dotgothic`
   ctx.fillText(string, PADDING - size / 25, PADDING + 20 + size * 1.4)
 
-  const logoWidth = 100 * 0.8
-  const logoHeight = 86 * 0.8
+  const logoWidth = 200 * 0.8
+  const logoHeight = 200 * 0.8
   const image = await loadImage('./logo.png')
   ctx.drawImage(image, PADDING, HEIGHT - PADDING - logoHeight, logoWidth, logoHeight)
   return canvas
